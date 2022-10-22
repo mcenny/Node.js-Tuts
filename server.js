@@ -5,10 +5,21 @@ const server = http.createServer((req, res) => {
     console.log(req.url, req.method)
 
     let path = './views/'
-    switch
+    switch(req.url){
+        case '/':
+            path += 'index.html'
+            break
+        case '/about':
+            path += 'about.html'
+            break
+        default:
+            path += '404.html'
+            break
+    }
+
 
     res.setHeader('content-Type', 'text/html')
-    fs.readFile('./views/index.html', (error, data) => {
+    fs.readFile(path, (error, data) => {
         if(error){
             console.log(error)
             res.end()
