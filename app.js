@@ -46,7 +46,12 @@ app.get('/all-blogs', (req, res) => {
 
 app.get('/single-blog', (req, res) => {
     Blog.findById('63616259ea24195d9f8f7da0')
-    .then()
+    .then((result) => {
+        res.send(result)
+    })
+    .catch((error) => {
+        console.log('some error occurred while fetching one blog')
+    })
 })
 
 // routes
@@ -58,6 +63,10 @@ app.get('/', (req, res)=>{
         {title: 'Ladipisicing minim sint cillum sint', snippet: 'Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat.'}
     ]
     res.render('index', {title: 'Home', blogs})
+})
+
+app.get('/blogs', (req, res) => {
+    Blog.find()
 })
 
 app.get('/about', (req, res)=>{
