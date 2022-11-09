@@ -5,15 +5,17 @@
   <%- include('./partials/nav.ejs') %>
   <div class="blogs content">
     <h2>All Blogs</h2>
-  </div>
     <% if(blogs.length > 0){ %> 
         <% blogs.map(blog => { %>
+          <a href="/blogs/<%= blog._id %>" class="single">
             <h3 class="title"><%= blog.title %></h3>
             <p class="snippet"><%= blog.snippet %></p>
+          </a>
         <% }) %>
     <% } else{ %>
         <p>There are no blogs at this time, check back later...</p>
     <% } %>
+  </div>
     <%- include('./partials/footer.ejs') %> 
 </body>
 </html>
